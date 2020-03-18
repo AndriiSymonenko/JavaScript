@@ -452,3 +452,55 @@ function arrayClone(arr) {
 
 
  vegetables;
+
+
+ let value = [1, 2, 3, 4];
+
+let array = value.forEach(item => item*2);
+
+console.log(array);
+
+
+function camelize(str) {
+ return str
+  .split('-')
+  .map((item, index) => index == 0 ? item : item[0].toUpperCase() + item.slice(1)
+  )
+  .join('');
+}
+
+let arr = camelize('background-color');
+console.log(arr);
+
+
+
+function filterRange(arr, a, b) {
+  return arr.filter(item => (a <= item && item <= b));
+}
+
+function filterRangeInPlace(arr, a, b) {
+
+  for (let i = 0; i < arr.length; i++) {
+    let val = arr[i];
+
+
+    if (val < a || val > b) {
+      arr.splice(i, 1);
+      i--;
+    }
+  }
+
+}
+
+let arr = [5, 3, 8, 1];
+
+filterRangeInPlace(arr, 1, 4);
+alert( arr );
+
+
+let arr = [5, 2, 1, -10, 8];
+
+arr.sort( (a, b) => a - b );
+
+console.log(arr);
+
