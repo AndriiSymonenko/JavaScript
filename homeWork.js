@@ -426,13 +426,14 @@ function sumInput() {
   return sum;
 }
 
-alert( sumInput() );
+alert(sumInput());
 
 
 var vegetables = ['Капуста', 'Репа', 'Редиска', 'Морковка'];
+
 function arrayClone(arr) {
   let cloneArr = [];
-  for(key of arr) {
+  for (key of arr) {
     cloneArr.push(key);
   }
   return cloneArr;
@@ -443,30 +444,29 @@ arrayClone(vegetables);
 
 function arrayClone(arr) {
   return arr.slice(0);
- };
+};
 
- var vegetables = ['Капуста', 'Репа', 'Редиска', 'Морковка'];
- 
- var str1 = vegetables.toString();
- var str2 = vegetables.join();
+var vegetables = ['Капуста', 'Репа', 'Редиска', 'Морковка'];
 
-
- vegetables;
+var str1 = vegetables.toString();
+var str2 = vegetables.join();
 
 
- let value = [1, 2, 3, 4];
+vegetables;
 
-let array = value.forEach(item => item*2);
+
+let value = [1, 2, 3, 4];
+
+let array = value.forEach(item => item * 2);
 
 console.log(array);
 
 
 function camelize(str) {
- return str
-  .split('-')
-  .map((item, index) => index == 0 ? item : item[0].toUpperCase() + item.slice(1)
-  )
-  .join('');
+  return str
+    .split('-')
+    .map((item, index) => index == 0 ? item : item[0].toUpperCase() + item.slice(1))
+    .join('');
 }
 
 let arr = camelize('background-color');
@@ -495,12 +495,184 @@ function filterRangeInPlace(arr, a, b) {
 let arr = [5, 3, 8, 1];
 
 filterRangeInPlace(arr, 1, 4);
-alert( arr );
+alert(arr);
 
 
 let arr = [5, 2, 1, -10, 8];
 
-arr.sort( (a, b) => a - b );
+arr.sort((a, b) => a - b);
 
 console.log(arr);
 
+
+
+function copySorted(arr) {
+  return arr.slice().sort();
+}
+
+let arr = ["HTML", "JavaScript", "CSS"];
+
+let sorted = copySorted(arr);
+
+console.log(sorted);
+console.log(arr);
+
+
+let vasya = {
+  name: "Вася",
+  age: 25
+};
+let petya = {
+  name: "Петя",
+  age: 30
+};
+let masha = {
+  name: "Маша",
+  age: 28
+};
+
+let users = [vasya, petya, masha];
+
+let names = users.map(item => item.name);
+
+console.log(names);
+
+
+let vasya = {
+  name: "Вася",
+  surname: "Пупкин",
+  id: 1
+};
+let petya = {
+  name: "Петя",
+  surname: "Иванов",
+  id: 2
+};
+let masha = {
+  name: "Маша",
+  surname: "Петрова",
+  id: 3
+};
+
+let users = [vasya, petya, masha];
+
+let usersMapped = users.map(user => ({
+  fullName: `${user.name} ${user.surname}`,
+  id: user.id
+}));
+
+alert(usersMapped[0].id); // 1
+alert(usersMapped[0].fullName);
+
+
+
+function sortByAge(users) {
+  return users.sort((a, b) => a.age > b.age ? 1 : -1);
+}
+
+
+let vasya = {
+  name: "Вася",
+  age: 25
+};
+let petya = {
+  name: "Петя",
+  age: 30
+};
+let masha = {
+  name: "Маша",
+  age: 28
+};
+
+let arr = [vasya, petya, masha];
+
+sortByAge(arr);
+
+console.log(arr);
+
+alert(arr[0].name);
+alert(arr[1].name);
+alert(arr[2].name);
+
+function shuffle(array) {
+  array.sort(() => Math.random() - 0.5);
+}
+
+let arr = [1, 2, 3];
+shuffle(arr);
+alert(arr);
+
+
+
+
+function getAverageAge(users) {
+  let age = users.map(item => item.age);
+  return age.reduce((sum, current) => sum + current, 0) / age.length;
+}
+
+let vasya = {
+  name: "Вася",
+  age: 25
+};
+let petya = {
+  name: "Петя",
+  age: 30
+};
+let masha = {
+  name: "Маша",
+  age: 29
+};
+
+let arr = [vasya, petya, masha];
+
+console.log(getAverageAge(arr));
+
+
+function unique(arr) {
+  let result = [];
+
+  for (let str of arr) {
+    if (!result.includes(str)) {
+      result.push(str);
+    }
+  }
+
+  return result;
+}
+
+
+var array = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+function getFirst(array, n = 0) {
+  return array.slice(0, n);
+};
+let res = getFirst(array, -3);
+console.log(res);
+
+
+
+array = [NaN, 0, 77, false, -17, '', undefined, 99, null];
+
+function filterFalse(arr) {
+  let newArr = [];
+  arr.map(item => {
+    if (item) {
+      newArr.push(item);
+    }
+  });
+  return newArr;
+}
+
+console.log(filterFalse(array));
+
+console.log(!!NaN);
+
+
+function camelCase(str) {
+  return str
+    .split(' ')
+    .map((item) => item[0].toUpperCase() + item.slice(1))
+    .join('');
+}
+
+console.log(camelCase("hello case"));
