@@ -676,3 +676,40 @@ function camelCase(str) {
 }
 
 console.log(camelCase("hello case"));
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+function User(name, surname, age) {
+  this.name = name;
+  this.surname = surname;
+  this.age = age;
+}
+
+let a = new User('Vasia', 'Vasiliev', 23);
+
+let b = new User('Petr', 'Petrov', 26);
+
+let c = new User('Olga', 'Ivanova', 20);
+
+
+
+
+
+let a = { name: 'Vasia', surname: 'Vasiliev', age: 23, sex: 'Male' };
+let b = { name: 'Petr', surname: 'Petrov', };
+let c = { name: 'Olga', surname: 'Ivanova', fathername: 'Ivanovna' };
+
+
+
+function  checkFields(obj) {
+  for(key in obj) {
+    if (key != 'surname' && key != 'name') {
+      console.log(key + ':' + ' ' + obj[key]);
+    }
+  }
+}
+
+checkFields(a);
+
+
