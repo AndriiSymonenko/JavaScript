@@ -713,3 +713,65 @@ function  checkFields(obj) {
 checkFields(a);
 
 
+
+function unique(arr) {
+  let setUniq = new Set(arr);
+
+  let arrUniq = [];
+
+  for( let value of setUniq) {
+    arrUniq.push(value);
+  }
+  return arrUniq;
+  
+}
+
+
+function unique(arr) {
+  return Array.from(new Set(arr));
+}
+
+
+let values = ["Hare", "Krishna", "Hare", "Krishna",
+  "Krishna", "Krishna", "Hare", "Hare", ":-O"
+];
+
+console.log(unique(values));
+
+
+let salaries = {
+  "John": 100,
+  "Pete": 300,
+  "Mary": 250
+};
+
+
+function sumSalaries(salaries) {
+  return Object.values(salaries).reduce((a, b) => a + b, 0);
+}
+
+
+
+function sumSalaries(obj) {
+    let sum = 0;
+
+    for(let result of Object.values(obj)) {
+     sum += result
+    }
+    return sum;
+}
+
+console.log( sumSalaries(salaries) );
+
+
+let user = {
+  name: 'John',
+  age: 30
+};
+
+function count(obj) {
+  return (Object.keys(obj).length);
+}
+
+
+console.log( count(user) );
