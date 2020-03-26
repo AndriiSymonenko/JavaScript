@@ -775,3 +775,121 @@ function count(obj) {
 
 
 console.log( count(user) );
+
+
+let user = {
+  name: "John",
+  years: 30
+};
+
+let  {name, years, isAdmin = false} = user;
+
+console.log(isAdmin);
+console.log(name, years);
+
+
+let salaries = {
+  "John": 100,
+  "Pete": 300,
+  "Mary": 250
+};
+
+function topSalary(salaries) {
+
+  let max = 0;
+  let maxName = null;
+
+  for(const [name, salary] of Object.entries(salaries)) {
+    if (max < salary) {
+      max = salary;
+      maxName = name;
+    }
+  }
+
+  return maxName;
+}
+
+console.log(topSalary(salaries));
+
+
+
+
+let date = new Date(2012, 01, 20, 03, 12);
+
+console.log(date);
+
+
+function getWeekDay(date) {
+  let days = ['ВС', 'ПН', 'ВТ', 'СР', 'ЧТ', 'ПТ', 'СБ'];
+
+  return days[date.getDay()];
+}
+
+let date = new Date(2012, 0, 3);
+alert( getWeekDay(date) ); 
+
+
+function getLocalDay(date) {
+  let day = date.getDay();
+
+  if (day == 0) {
+    day = 7;
+  }
+  return day;
+}
+
+let date = new Date(2020, 2, 8);
+console.log( getLocalDay(date) );
+
+
+
+function getDateAgo(date, days) {
+  let dateCopy = new Date(date);
+
+  dateCopy.setDate(date.getDate() - days);
+  return dateCopy.getDate();
+}
+
+let date = new Date(2015, 0, 2);
+console.log( getDateAgo(date, 365));
+
+
+function getLastDayOfMonth(year, month) {
+  let date = new Date(year, month + 1, 0);
+  return date.getDate();
+}
+
+
+
+function getSecondsToday() {
+  let now = new Date();
+
+  // создаём объект с текущими днём/месяцем/годом
+  let today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+
+  let diff = now - today; // разница в миллисекундах
+  return Math.round(diff / 1000); // получаем секунды
+}
+
+
+
+alert( getSecondsToday() );
+
+function getSecondsToTomorrow() {
+  let now = new Date();
+
+  // завтрашняя дата
+  let tomorrow = new Date(now.getFullYear(), now.getMonth(), now.getDate()+1);
+
+  let diff = tomorrow - now; // разница в миллисекундах
+  return Math.round(diff / 1000); // преобразуем в секунды
+}
+
+function getBirthdayLeft(date) {
+  let birthday = new Date(date);
+  date.setDate(date.getDate() - days);
+}
+
+let res = getBirthdayLeft(1982, 4, 14);
+
+console.log(res);
