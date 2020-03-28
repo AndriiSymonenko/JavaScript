@@ -696,14 +696,26 @@ let c = new User('Olga', 'Ivanova', 20);
 
 
 
-let a = { name: 'Vasia', surname: 'Vasiliev', age: 23, sex: 'Male' };
-let b = { name: 'Petr', surname: 'Petrov', };
-let c = { name: 'Olga', surname: 'Ivanova', fathername: 'Ivanovna' };
+let a = {
+  name: 'Vasia',
+  surname: 'Vasiliev',
+  age: 23,
+  sex: 'Male'
+};
+let b = {
+  name: 'Petr',
+  surname: 'Petrov',
+};
+let c = {
+  name: 'Olga',
+  surname: 'Ivanova',
+  fathername: 'Ivanovna'
+};
 
 
 
-function  checkFields(obj) {
-  for(key in obj) {
+function checkFields(obj) {
+  for (key in obj) {
     if (key != 'surname' && key != 'name') {
       console.log(key + ':' + ' ' + obj[key]);
     }
@@ -719,11 +731,11 @@ function unique(arr) {
 
   let arrUniq = [];
 
-  for( let value of setUniq) {
+  for (let value of setUniq) {
     arrUniq.push(value);
   }
   return arrUniq;
-  
+
 }
 
 
@@ -753,15 +765,15 @@ function sumSalaries(salaries) {
 
 
 function sumSalaries(obj) {
-    let sum = 0;
+  let sum = 0;
 
-    for(let result of Object.values(obj)) {
-     sum += result
-    }
-    return sum;
+  for (let result of Object.values(obj)) {
+    sum += result
+  }
+  return sum;
 }
 
-console.log( sumSalaries(salaries) );
+console.log(sumSalaries(salaries));
 
 
 let user = {
@@ -774,7 +786,7 @@ function count(obj) {
 }
 
 
-console.log( count(user) );
+console.log(count(user));
 
 
 let user = {
@@ -782,7 +794,11 @@ let user = {
   years: 30
 };
 
-let  {name, years, isAdmin = false} = user;
+let {
+  name,
+  years,
+  isAdmin = false
+} = user;
 
 console.log(isAdmin);
 console.log(name, years);
@@ -799,7 +815,7 @@ function topSalary(salaries) {
   let max = 0;
   let maxName = null;
 
-  for(const [name, salary] of Object.entries(salaries)) {
+  for (const [name, salary] of Object.entries(salaries)) {
     if (max < salary) {
       max = salary;
       maxName = name;
@@ -826,7 +842,7 @@ function getWeekDay(date) {
 }
 
 let date = new Date(2012, 0, 3);
-alert( getWeekDay(date) ); 
+alert(getWeekDay(date));
 
 
 function getLocalDay(date) {
@@ -839,7 +855,7 @@ function getLocalDay(date) {
 }
 
 let date = new Date(2020, 2, 8);
-console.log( getLocalDay(date) );
+console.log(getLocalDay(date));
 
 
 
@@ -851,7 +867,7 @@ function getDateAgo(date, days) {
 }
 
 let date = new Date(2015, 0, 2);
-console.log( getDateAgo(date, 365));
+console.log(getDateAgo(date, 365));
 
 
 function getLastDayOfMonth(year, month) {
@@ -873,23 +889,53 @@ function getSecondsToday() {
 
 
 
-alert( getSecondsToday() );
+alert(getSecondsToday());
 
 function getSecondsToTomorrow() {
   let now = new Date();
 
   // завтрашняя дата
-  let tomorrow = new Date(now.getFullYear(), now.getMonth(), now.getDate()+1);
+  let tomorrow = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
 
   let diff = tomorrow - now; // разница в миллисекундах
   return Math.round(diff / 1000); // преобразуем в секунды
 }
 
-function getBirthdayLeft(date) {
-  let birthday = new Date(date);
-  date.setDate(date.getDate() - days);
-}
 
-let res = getBirthdayLeft(1982, 4, 14);
+let user = {
+  name: "Василий Иванович",
+  age: 35
+};
 
-console.log(res);
+
+let jsonUser = JSON.stringify(user);
+
+console.log(jsonUser);
+
+let toObject = JSON.parse(jsonUser);
+
+console.log(toObject);
+
+
+// Исключение обратных ссылол JSON:
+
+let room = {
+  number: 23
+};
+
+let meetup = {
+  title: "Совещание",
+  occupiedBy: [{
+    name: "Иванов"
+  }, {
+    name: "Петров"
+  }],
+  place: room
+};
+
+room.occupiedBy = meetup;
+meetup.self = meetup;
+
+alert(JSON.stringify(meetup, function replacer(key, value) {
+  return (key != "" && value == meetup) ? undefined : value;
+}));
