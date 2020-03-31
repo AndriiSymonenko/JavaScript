@@ -939,3 +939,201 @@ meetup.self = meetup;
 alert(JSON.stringify(meetup, function replacer(key, value) {
   return (key != "" && value == meetup) ? undefined : value;
 }));
+
+
+
+var obj = {
+  foo: 'bar',
+  for: 'in',
+}
+
+
+function reverse(obj) {
+  let ent = Object.entries(obj);
+  ent[0].reverse();
+  ent[1].reverse();
+  obj = Object.fromEntries(ent);
+  return obj;
+}
+
+
+console.log(reverse(obj));
+
+
+
+//Loop function
+
+function sumTo(n) {
+  let result = 0;
+  for (let i = 0; i <= n; i++) {
+    result += i;
+  }
+  return result;
+}
+
+console.log(sumTo(2));
+
+
+//Recursion function
+
+function sumTo(n) {
+  if (n == 1) {
+    return n;
+  } else {
+    return n + sumTo(n - 1);
+  }
+}
+
+console.log(sumTo(3));
+
+
+//Arithmetic progression
+
+function sumTo(n) {
+  return n * (n + 1) / 2;
+}
+
+console.log(sumTo(3));
+
+
+function factorial(n) {
+  return (n != 1) ? n * factorial(n - 1) : 1;
+}
+
+console.log(factorial(5));
+
+
+// Fibonacci numbers
+
+debugger;
+
+function fib(n) {
+  let a = 1;
+  let b = 1;
+  for (let i = 3; i <= n; i++) {
+    let c = a + b;
+    a = b;
+    b = c;
+  }
+  return b;
+}
+
+console.log(fib(10));
+
+
+const fibonacci = num => {
+  // Сохраняем последовательность Фибоначчи, которую собираемся сгенерировать,
+  // внутри массива и инициализируем массив первыми двумя числами последовательности
+  const result = [0, 1]
+
+  for (let i = 2; i <= num; i++) {
+    // Поместим сумму двух чисел, предшествующих позиции i в массиве результатов, 
+    // в конец этого массива
+    const prevNum1 = result[i - 1]
+    const prevNum2 = result[i - 2]
+    result.push(prevNum1 + prevNum2)
+  }
+  // Вернём последнее значение из массива результатов
+  return result[num]
+}
+
+console.log(fibonacci(77));
+
+
+
+let list = {
+  value: 1,
+  next: {
+    value: 2,
+    next: {
+      value: 3,
+      next: {
+        value: 4,
+        next: null
+      }
+    }
+  }
+};
+
+function printList(list) {
+  let temp = list;
+  while (temp) {
+    console.log(temp.value);
+    temp = temp.next
+  }
+}
+
+function printListRec(list) {
+  console.log(list.value);
+
+  if (list.next) {
+    printListRec(list.next);
+  }
+}
+
+printList(list);
+printListRec(list);
+
+
+let list = {
+  value: 1,
+  next: {
+    value: 2,
+    next: {
+      value: 3,
+      next: {
+        value: 4,
+        next: null
+      }
+    }
+  }
+};
+
+
+
+function printListReverse(list) {
+  let arr = [];
+  let temp = list;
+
+  while (temp) {
+    arr.push(temp.value);
+    temp = temp.next;
+  }
+arr.reverse();
+arr.map(item => console.log(item));
+}
+
+
+printListReverse(list);
+
+
+function printListRecReverse(list) {
+  let arr = [];
+  arr.push(list.value);
+
+  if (list.next) {
+    printListRecReverse(list.next);
+  }
+  console.log(arr[0]);
+}
+
+
+let list = {
+  value: 1,
+  next: {
+    value: 2,
+    next: {
+      value: 3,
+      next: {
+        value: 4,
+        next: null
+      }
+    }
+  }
+};
+
+printListRecReverse(list);
+
+
+
+
