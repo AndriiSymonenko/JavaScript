@@ -1223,13 +1223,51 @@ function solution(string) {
 solution('camelCasing');
 
 
-function toWeirdCase(string) {
-  let arr = string.split(' ');
-  for (let i = 0; i < arr.length; i++) {
-      console.log(arr[i]);
-    }
+function makeCounter() {
+
+let count = 0;
+
+  function counter() {
+    return count++
   }
 
+ 
+  set.value = value => count = value;
+
+  counter.decrese = () => count--;
+
+  return counter; 
+  
+}
 
 
-toWeirdCase( "Weird string case" );
+function printNumbers(from, to) {
+  let current = from;
+  setTimeout(function run(){
+    console.log(current);
+    if (current < to) {
+      setTimeout(run, 1000);
+    }
+    current++;
+  }, 1000)
+}
+
+printNumbers(1, 10);
+
+
+function printNumbers(from, to) {
+  let current = from;
+function run(){
+    console.log(current);
+    if (current == to) {
+      clearInterval(timerId);
+    }
+    current++;
+  }
+
+  run();
+  let timerId = setInterval(run, 1000);
+
+}
+
+printNumbers(1, 10);
